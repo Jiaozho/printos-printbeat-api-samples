@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "47fc4ed1-6392-46c6-885c-879baf4f33d8",
+		"_postman_id": "b0c3732f-ef2e-4d6c-b12c-07842f5d0c5a",
 		"name": "Print Beat Jobs",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10916568"
 	},
 	"item": [
 		{
@@ -12,14 +13,15 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"var key = postman.getEnvironmentVariable(\"key\");",
-							"var secret = postman.getEnvironmentVariable(\"secret\");",
-							"var kpi = postman.getEnvironmentVariable(\"kpi\");",
+							"require('crypto-js');",
+							"",
+							"var key = pm.environment.get(\"key\");",
+							"var secret = pm.environment.get(\"secret\");",
 							"var endpoint = \"/externalApi/jobs\";",
 							"var headers = createHeaders (\"GET\", endpoint );",
 							"",
-							"postman.setEnvironmentVariable(\"hmacHeader\", headers[0]);",
-							"postman.setEnvironmentVariable(\"timestamp\", headers[1]);",
+							"pm.environment.set(\"hmacHeader\", headers[0]);",
+							"pm.environment.set(\"timestamp\", headers[1]);",
 							"",
 							"function createHeaders(method, path) {",
 							"    var timestamp = (new Date()).toISOString();",
@@ -30,13 +32,13 @@
 							"    var sig = CryptoJS.enc.Hex.stringify(hash);",
 							"    var headers = [",
 							"      key + \":\" + sig,",
-							"      timestamp,",
-							"      \"SHA256\"",
+							"      timestamp",
 							"    ];",
 							"    return headers;",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],

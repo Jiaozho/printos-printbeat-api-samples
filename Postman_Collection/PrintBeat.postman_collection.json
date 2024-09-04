@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "963d1eca-f677-426a-8f58-bf5cb47a0044",
-		"name": "PrintBeat-ColorBeat Copy",
+		"_postman_id": "8271d675-3bda-474f-887c-694666728a10",
+		"name": "PrintBeat",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "10916568"
 	},
@@ -13,14 +13,16 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"var key = postman.getEnvironmentVariable(\"key\");",
-							"var secret = postman.getEnvironmentVariable(\"secret\");",
-							"var kpi = postman.getEnvironmentVariable(\"kpi\");",
+							"require('crypto-js');",
+							"",
+							"var key = pm.environment.get(\"key\");",
+							"var secret = pm.environment.get(\"secret\");",
+							"var kpi =pm.environment.get(\"kpi\");",
 							"var endpoint = \"/externalApi/v1/Historic/\" + kpi;",
 							"var headers = createHeaders (\"GET\", endpoint );",
 							"",
-							"postman.setEnvironmentVariable(\"hmacHeader\", headers[0]);",
-							"postman.setEnvironmentVariable(\"timestamp\", headers[1]);",
+							"pm.environment.set(\"hmacHeader\", headers[0]);",
+							"pm.environment.set(\"timestamp\", headers[1]);",
 							"",
 							"function createHeaders(method, path) {",
 							"    var timestamp = (new Date()).toISOString();",
@@ -31,13 +33,13 @@
 							"    var sig = CryptoJS.enc.Hex.stringify(hash);",
 							"    var headers = [",
 							"      key + \":\" + sig,",
-							"      timestamp,",
-							"      \"SHA256\"",
+							"      timestamp",
 							"    ];",
 							"    return headers;",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -103,14 +105,16 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"var key = postman.getEnvironmentVariable(\"key\");",
-							"var secret = postman.getEnvironmentVariable(\"secret\");",
-							"var kpi = postman.getEnvironmentVariable(\"kpi\");",
+							"require('crypto-js');",
+							"",
+							"var key = pm.environment.get(\"key\");",
+							"var secret = pm.environment.get(\"secret\");",
+							"var kpi = pm.environment.get(\"kpi\");",
 							"var endpoint = \"/externalApi/v1/RealTimeData\";",
 							"var headers = createHeaders (\"GET\", endpoint );",
 							"",
-							"postman.setEnvironmentVariable(\"hmacHeader\", headers[0]);",
-							"postman.setEnvironmentVariable(\"timestamp\", headers[1]);",
+							"pm.environment.set(\"hmacHeader\", headers[0]);",
+							"pm.environment.set(\"timestamp\", headers[1]);",
 							"",
 							"function createHeaders(method, path) {",
 							"    var timestamp = (new Date()).toISOString();",
@@ -121,13 +125,13 @@
 							"    var sig = CryptoJS.enc.Hex.stringify(hash);",
 							"    var headers = [",
 							"      key + \":\" + sig,",
-							"      timestamp,",
-							"      \"SHA256\"",
+							"      timestamp",
 							"    ];",
 							"    return headers;",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -184,13 +188,15 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"var key = postman.getEnvironmentVariable(\"key\");",
-							"var secret = postman.getEnvironmentVariable(\"secret\");",
+							"require('crypto-js');",
+							"",
+							"var key = pm.environment.get(\"key\");",
+							"var secret = pm.environment.get(\"secret\");",
 							"var endpoint = '/externalApi/gsb/scitexJobs/records';",
 							"var headers = createHeaders (\"POST\", endpoint );",
 							"",
-							"postman.setEnvironmentVariable(\"hmacHeader\", headers[0]);",
-							"postman.setEnvironmentVariable(\"timestamp\", headers[1]);",
+							"pm.environment.set(\"hmacHeader\", headers[0]);",
+							"pm.environment.set(\"timestamp\", headers[1]);",
 							"",
 							"function createHeaders(method, path) {",
 							"    var timestamp = (new Date()).toISOString();",
@@ -201,13 +207,13 @@
 							"    var sig = CryptoJS.enc.Hex.stringify(hash);",
 							"    var headers = [",
 							"      key + \":\" + sig,",
-							"      timestamp,",
-							"      \"SHA256\"",
+							"      timestamp",
 							"    ];",
 							"    return headers;",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -260,13 +266,15 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"var key = postman.getEnvironmentVariable(\"key\");",
-							"var secret = postman.getEnvironmentVariable(\"secret\");",
+							"require('crypto-js');",
+							"",
+							"var key = pm.environment.get(\"key\");",
+							"var secret = pm.environment.get(\"secret\");",
 							"var endpoint = \"/externalApi/gsb/jobs/records\";",
 							"var headers = createHeaders (\"GET\", endpoint );",
 							"",
-							"postman.setEnvironmentVariable(\"hmacHeader\", headers[0]);",
-							"postman.setEnvironmentVariable(\"timestamp\", headers[1]);",
+							"pm.environment.set(\"hmacHeader\", headers[0]);",
+							"pm.environment.set(\"timestamp\", headers[1]);",
 							"",
 							"function createHeaders(method, path) {",
 							"    var timestamp = (new Date()).toISOString();",
@@ -277,13 +285,13 @@
 							"    var sig = CryptoJS.enc.Hex.stringify(hash);",
 							"    var headers = [",
 							"      key + \":\" + sig,",
-							"      timestamp,",
-							"      \"SHA256\"",
+							"      timestamp",
 							"    ];",
 							"    return headers;",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -349,13 +357,15 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"var key = postman.getEnvironmentVariable(\"key\");",
-							"var secret = postman.getEnvironmentVariable(\"secret\");",
+							"require('crypto-js');",
+							"",
+							"var key = pm.environment.get(\"key\");",
+							"var secret = pm.environment.get(\"secret\");",
 							"var endpoint = \"/externalApi/v1/colorbeat/dataByTimeFrame\";",
 							"var headers = createHeaders (\"GET\", endpoint );",
 							"",
-							"postman.setEnvironmentVariable(\"hmacHeader\", headers[0]);",
-							"postman.setEnvironmentVariable(\"timestamp\", headers[1]);",
+							"pm.environment.set(\"hmacHeader\", headers[0]);",
+							"pm.environment.set(\"timestamp\", headers[1]);",
 							"",
 							"function createHeaders(method, path) {",
 							"    var timestamp = (new Date()).toISOString();",
@@ -366,13 +376,13 @@
 							"    var sig = CryptoJS.enc.Hex.stringify(hash);",
 							"    var headers = [",
 							"      key + \":\" + sig,",
-							"      timestamp,",
-							"      \"SHA256\"",
+							"      timestamp",
 							"    ];",
 							"    return headers;",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -426,13 +436,15 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"var key = postman.getEnvironmentVariable(\"key\");",
-							"var secret = postman.getEnvironmentVariable(\"secret\");",
+							"require('crypto-js');",
+							"",
+							"var key = pm.environment.get(\"key\");",
+							"var secret = pm.environment.get(\"secret\");",
 							"var endpoint = \"/externalApi/v1/colorbeat/rawdata\";",
 							"var headers = createHeaders (\"GET\", endpoint );",
 							"",
-							"postman.setEnvironmentVariable(\"hmacHeader\", headers[0]);",
-							"postman.setEnvironmentVariable(\"timestamp\", headers[1]);",
+							"pm.environment.set(\"hmacHeader\", headers[0]);",
+							"pm.environment.set(\"timestamp\", headers[1]);",
 							"",
 							"function createHeaders(method, path) {",
 							"    var timestamp = (new Date()).toISOString();",
@@ -443,13 +455,13 @@
 							"    var sig = CryptoJS.enc.Hex.stringify(hash);",
 							"    var headers = [",
 							"      key + \":\" + sig,",
-							"      timestamp,",
-							"      \"SHA256\"",
+							"      timestamp",
 							"    ];",
 							"    return headers;",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -503,13 +515,15 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"var key = postman.getEnvironmentVariable(\"key\");",
-							"var secret = postman.getEnvironmentVariable(\"secret\");",
+							"require('crypto-js');",
+							"",
+							"var key = pm.environment.get(\"key\");",
+							"var secret = pm.environment.get(\"secret\");",
 							"var endpoint = \"/externalApi/v1/oee/chart\";",
 							"var headers = createHeaders (\"GET\", endpoint );",
 							"",
-							"postman.setEnvironmentVariable(\"hmacHeader\", headers[0]);",
-							"postman.setEnvironmentVariable(\"timestamp\", headers[1]);",
+							"pm.environment.set(\"hmacHeader\", headers[0]);",
+							"pm.environment.set(\"timestamp\", headers[1]);",
 							"",
 							"function createHeaders(method, path) {",
 							"    var timestamp = (new Date()).toISOString();",
@@ -520,13 +534,13 @@
 							"    var sig = CryptoJS.enc.Hex.stringify(hash);",
 							"    var headers = [",
 							"      key + \":\" + sig,",
-							"      timestamp,",
-							"      \"SHA256\"",
+							"      timestamp",
 							"    ];",
 							"    return headers;",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -588,13 +602,15 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"var key = postman.getEnvironmentVariable(\"key\");",
-							"var secret = postman.getEnvironmentVariable(\"secret\");",
+							"require('crypto-js');",
+							"",
+							"var key = pm.environment.get(\"key\");",
+							"var secret = pm.environment.get(\"secret\");",
 							"var endpoint = \"/externalApi/v1/oee/drilldown\";",
 							"var headers = createHeaders (\"GET\", endpoint );",
 							"",
-							"postman.setEnvironmentVariable(\"hmacHeader\", headers[0]);",
-							"postman.setEnvironmentVariable(\"timestamp\", headers[1]);",
+							"pm.environment.set(\"hmacHeader\", headers[0]);",
+							"pm.environment.set(\"timestamp\", headers[1]);",
 							"",
 							"function createHeaders(method, path) {",
 							"    var timestamp = (new Date()).toISOString();",
@@ -605,13 +621,13 @@
 							"    var sig = CryptoJS.enc.Hex.stringify(hash);",
 							"    var headers = [",
 							"      key + \":\" + sig,",
-							"      timestamp,",
-							"      \"SHA256\"",
+							"      timestamp",
 							"    ];",
 							"    return headers;",
 							"}"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
